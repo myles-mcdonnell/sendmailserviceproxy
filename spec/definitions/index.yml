@@ -1,0 +1,4 @@
+errorMessage:
+  $ref: ./errorMessage.yml
+email:
+  $ref: ./email.yml

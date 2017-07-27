@@ -1,0 +1,22 @@
+post:
+  summary: "Send email"
+  security:
+  - APIKeyQueryHeader: []
+  parameters:
+  - in: body
+    name: email
+    description: "Email to send"
+    required: true
+    schema:
+      $ref: '#/definitions/email'
+  responses:
+    200:
+      description: "Email forwarded successfully"
+    401:
+      description: "unauthorised"
+    default:
+      description: "generic error response"
+      schema:
+        $ref: "#/definitions/errorMessage"
+  tags:
+    - email

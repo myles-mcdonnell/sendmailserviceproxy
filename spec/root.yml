@@ -1,0 +1,19 @@
+swagger: "2.0"
+info:
+  title: "send-mail-service-proxy"
+  version: "1.0.0"
+produces:
+  - application/json
+consumes:
+  - application/json
+schemes:
+  - http
+securityDefinitions:
+   APIKeyHeader:
+     type: apiKey
+     in: header
+     name: X-API-Key
+definitions:
+  $ref: './definitions/index.yml'
+paths:
+  $ref: './paths/index.yml'

@@ -1,0 +1,10 @@
+get:
+  responses:
+    200:
+      description: "confirm that the service is healthy"
+    default:
+      description: "generic error response"
+      schema:
+        $ref: "#/definitions/errorMessage"
+  tags:
+    - healthcheck

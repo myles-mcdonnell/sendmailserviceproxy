@@ -1,0 +1,35 @@
+package: github.com/myles-mcdonnell/sendmailserviceproxy
+import:
+- package: github.com/go-openapi/errors
+- package: github.com/go-openapi/loads
+- package: github.com/go-openapi/runtime
+  subpackages:
+  - client
+  - flagext
+  - middleware
+- package: github.com/go-openapi/spec
+- package: github.com/go-openapi/strfmt
+- package: github.com/go-openapi/swag
+- package: github.com/go-openapi/validate
+- package: github.com/jessevdk/go-flags
+  version: v1.3.0
+- package: github.com/mailgun/mailgun-go
+  version: v1.1.0
+- package: github.com/rs/cors
+  version: v1.1
+- package: github.com/sendgrid/sendgrid-go
+  version: v3.4.1
+  subpackages:
+  - helpers/mail
+- package: github.com/tylerb/graceful
+  version: v1.2.15
+- package: golang.org/x/net
+  subpackages:
+  - context
+- package: gopkg.in/myles-mcdonnell/loglight.v3
+  version: v3.0.0
+- package: gopkg.in/satori/go.uuid.v1
+  version: v1.1.0
+testImport:
+- package: github.com/pkg/errors
+  version: v0.8.0

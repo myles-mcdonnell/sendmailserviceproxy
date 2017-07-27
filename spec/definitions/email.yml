@@ -1,0 +1,13 @@
+type: object
+required:
+  - fromaddress
+  - toaddress
+properties:
+  plaintextbody:
+    type: string
+  subject:
+    type: string
+  fromaddress:
+    type: string
+  toaddress:
+    type: string

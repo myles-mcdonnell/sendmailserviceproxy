@@ -8,7 +8,7 @@ This is a JSON over HTTP service that proxies for 2 email services and will fail
 
 A bespoke implementation of [Circuit Breaker](https://martinfowler.com/bliki/CircuitBreaker.html) is used to detect downstream failure (reported errors and timeouts).  Real messages are never sent along circuits known to be open, rather the circuit is polled with a dummy recipient until such time as it closes.
 
-For demonstration purposes there is a new node instance of the system deployed on podspace.io here [https://sendmailserviceproxy.keyshift.co](https://sendmailserviceproxy.keyshift.co/healthcheck)
+For demonstration purposes there is a two node instance of the system deployed on [podspace.io](http://podspace.io) here [https://sendmailserviceproxy.keyshift.co](https://sendmailserviceproxy.keyshift.co/healthcheck)
 
 To send an email execute the following
 
@@ -33,7 +33,7 @@ Maximum throughput and scalability are design goals for this service.
 
 With regard to throughput no mutually exclusive locks are taken when mail is sent.  Running the unit tests with race detection enabled will evidence a race condition; this is by design.  The effect is latency around the behaviour according to the state of the circuit, this is preferable to the reduction in throughput incurred were this race eliminated through synchronization.
 
-This service can be scaled out over *n* nodes.  The only state with in the services is that of the circuits.  It is desirable to hold the state in isolation as circuits may be open from some nodes and closed from others according to network conditions etc.
+This service can be scaled out over *n* nodes.  The only state within the service is that of the circuits.  It is desirable to hold the state in isolation as circuits may be open from some nodes and closed from others according to network conditions etc.
 
 ## Security
 
@@ -51,8 +51,8 @@ Browse to [http://petstore.swagger.io/](http://petstore.swagger.io/) (or pull an
 * Install recent version of NodeJs if not already present
 * Run `chmod +x ./scripts/`
 * Run [scripts/install_build_tools.sh](install_build_tools.sh)
-* Run `glide install` to pull Go dependencies (see here for Glide info http://github.com/masterminds/glide)
 * Run [scripts/swagger_code_gen.sh](swagger_code_gen.sh) to generate the server skeleton and [client](client) package.
+* Run `glide install` to pull Go dependencies (see here for Glide info http://github.com/masterminds/glide) (this will terminate in error due to version conflict, this can be ignored)
 * Run [scripts/run_unit_tests.sh](scripts/run_unit_tests.sh)
 * Set the following environment variables
     * SMSP_MG_DOMAIN - MailGun Domain

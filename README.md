@@ -8,7 +8,7 @@ This is a JSON over HTTP service that proxies for 2 email services and will fail
 
 A bespoke implementation of [Circuit Breaker](https://martinfowler.com/bliki/CircuitBreaker.html) is used to detect downstream failure (reported errors and timeouts).  Real messages are never sent along circuits known to be open, rather the circuit is polled with a dummy recipient until such time as it closes.
 
-For demonstration purposes there is a new node instance of the system deployed on podspace.io here [https://sendmailserviceproxy.keyshift.co](https://sendmailserviceproxy.keyshift.co/healthcheck)
+For demonstration purposes there is a two node instance of the system deployed on [podspace.io](http://podspace.io) here [https://sendmailserviceproxy.keyshift.co](https://sendmailserviceproxy.keyshift.co/healthcheck)
 
 To send an email execute the following
 
@@ -21,7 +21,7 @@ To send an email execute the following
 * json-refs (a Nodejs package) is used to aggregate the spec to a single JSON file from the many YML files that define the models, routes etc
 * Code is hosted on GitHub
 * Go dependencies are managed with [Glide](http://github.com/masterminds/glide)
-* Unit and [functionaltests](functionaltests) both use the Go testing framework.
+* Unit and [functional tests](functionaltests) both use the Go testing framework.
 * The build output is an immutable docker image which is published to [Dockerhub](https://hub.docker.com/r/mylesmcdonnell/sendmailserviceproxy/).
 * [12 Factor App](https://12factor.net/) principles are applied.  All configuration is read from the environment, none exists in source control or the build output.
 * The service is currently hosted on [Podspace.io](https://www.podspace.io/) (which is Kubernetes and OpenShift aaS) running 2 load balanced nodes.
@@ -33,7 +33,7 @@ Maximum throughput and scalability are design goals for this service.
 
 With regard to throughput no mutually exclusive locks are taken when mail is sent.  Running the unit tests with race detection enabled will evidence a race condition; this is by design.  The effect is latency around the behaviour according to the state of the circuit, this is preferable to the reduction in throughput incurred were this race eliminated through synchronization.
 
-This service can be scaled out over *n* nodes.  The only state with in the services is that of the circuits.  It is desirable to hold the state in isolation as circuits may be open from some nodes and closed from others according to network conditions etc.
+This service can be scaled out over *n* nodes.  The only state within the service is that of the circuits.  It is desirable to hold the state in isolation as circuits may be open from some nodes and closed from others according to network conditions etc.
 
 ## Security
 
@@ -51,8 +51,8 @@ Browse to [http://petstore.swagger.io/](http://petstore.swagger.io/) (or pull an
 * Install recent version of NodeJs if not already present
 * Run `chmod +x ./scripts/`
 * Run [scripts/install_build_tools.sh](install_build_tools.sh)
-* Run `glide install` to pull Go dependencies (see here for Glide info http://github.com/masterminds/glide)
 * Run [scripts/swagger_code_gen.sh](swagger_code_gen.sh) to generate the server skeleton and [client](client) package.
+* Run `glide install` to pull Go dependencies (see here for Glide info http://github.com/masterminds/glide) (this will terminate in error due to version conflict, this can be ignored)
 * Run [scripts/run_unit_tests.sh](scripts/run_unit_tests.sh)
 * Set the following environment variables
     * SMSP_MG_DOMAIN - MailGun Domain
@@ -82,6 +82,6 @@ To run the function tests:
 * To load test the system I would probably use [http://locust.io](http://locust.io)
 * The system is hardcoded to use SendMail and MailGun services.  However the [email handler](routes/email.go) is coded to work with *n* email services so it's easy to see how the service could be extended to enable multiple underlying email services and with Go plugins these could be injected dynamically at startup.
 * There could be a more comprehensive set of functional and unit tests.  What has been implemented proves the model but I would certainly invest more time here for a production system.
-* In a production setting I would use a build platform, such as CirciCI, to automate the build pipeline including unit and functional testing and the publishing of docker images on successful build.  A continuous delivery/deployment pipeline could then be implements onwards of that where a requirement.
+* In a production scenario I would use a build platform, such as CirciCI, to automate the build pipeline including unit and functional testing and the publishing of docker images on successful build.  A continuous delivery/deployment pipeline could then be implemented onwards if that where a requirement.
 
 

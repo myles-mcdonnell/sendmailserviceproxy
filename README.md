@@ -42,7 +42,7 @@ This service can be scaled out over *n* nodes.  The only state within the servic
 
 ## API Documentation
 
-Browse to [http://petstore.swagger.io/](http://petstore.swagger.io/) (or pull and run the [Swagger UI](https://swagger.io/swagger-ui/) locally if you prefer) then enter [http://sendmailserviceproxy.keyshift.co/swagger.json](http://sendmailserviceproxy.keyshift.co/swagger.json) and click explore to see the interactive documentation
+Browse to [http://petstore.swagger.io/](http://petstore.swagger.io/) (or pull and run the [Swagger UI](https://swagger.io/swagger-ui/) locally if you prefer) then enter [https://sendmailserviceproxy.keyshift.co/swagger.json](https://sendmailserviceproxy.keyshift.co/swagger.json) and click explore to see the interactive documentation
 
 
 ## Build Instructions

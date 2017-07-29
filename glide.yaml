@@ -27,7 +27,7 @@ import:
   subpackages:
   - context
 - package: gopkg.in/myles-mcdonnell/loglight.v3
-  version: v3.0.0
+  version: v3.1.0
 - package: gopkg.in/satori/go.uuid.v1
   version: v1.1.0
 testImport:

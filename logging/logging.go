@@ -2,7 +2,6 @@ package logging
 
 import (
 	"fmt"
-	"gopkg.in/myles-mcdonnell/jsonx.v1"
 	"gopkg.in/myles-mcdonnell/loglight.v3"
 	"gopkg.in/satori/go.uuid.v1"
 	"net/http"
@@ -59,7 +58,7 @@ func DebugFormatter(logEntry loglight.LogEntry) string {
 
 	logEvent, _ := logEntry.Data.(*LogEvent)
 
-	return fmt.Sprintf("%s : %s", logEntry.LogLevel, getJson(logEvent.Additional, false))
+	return fmt.Sprintf("%s : %s", logEntry.LogLevel, loglight.GetJson(logEvent.Additional, false))
 }
 
 type LogEvent struct {
@@ -119,23 +118,4 @@ func (c *RequestKey) Handler(h http.Handler) http.Handler {
 		c.ServeHTTP(w, r)
 		h.ServeHTTP(w, r)
 	})
-}
-
-func getJson(msg interface{}, pretty bool) string {
-
-	bytes, err := marshallJson(msg, pretty)
-
-	if err != nil {
-		return fmt.Sprintf("error serializing msg %s", err.Error())
-	}
-
-	return string(bytes)
-}
-
-func marshallJson(msg interface{}, pretty bool) ([]byte, error) {
-	if pretty {
-		return jsonx.MarshalIndentWithOptions(msg, "", "    ", jsonx.MarshalOptions{SkipUnserializableFields: true})
-	} else {
-		return jsonx.MarshalWithOptions(msg, jsonx.MarshalOptions{SkipUnserializableFields: true})
-	}
 }

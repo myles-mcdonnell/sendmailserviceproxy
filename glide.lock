@@ -1,0 +1,91 @@
+hash: 3705c22add8aff602dc9689e3d0ad1e64d237e11f7178f3863951c31e4beb570
+updated: 2017-08-14T22:08:24.975065053+01:00
+imports:
+- name: github.com/asaskevich/govalidator
+  version: 15028e809df8c71964e8efa6c11e81d5c0262302
+- name: github.com/docker/go-units
+  version: 0dadbb0345b35ec7ef35e228dabb8de89a65bf52
+- name: github.com/go-openapi/analysis
+  version: 8ed83f2ea9f00f945516462951a288eaa68bf0d6
+- name: github.com/go-openapi/errors
+  version: 03cfca65330da08a5a440053faf994a3c682b5bf
+- name: github.com/go-openapi/jsonpointer
+  version: 779f45308c19820f1a69e9a4cd965f496e0da10f
+- name: github.com/go-openapi/jsonreference
+  version: 36d33bfe519efae5632669801b180bf1a245da3b
+- name: github.com/go-openapi/loads
+  version: a80dea3052f00e5f032e860dd7355cd0cc67e24d
+- name: github.com/go-openapi/runtime
+  version: d6605b7c17ac3b1033ca794886e6142a4141f5b0
+  subpackages:
+  - client
+  - flagext
+  - middleware
+  - middleware/denco
+  - middleware/header
+  - middleware/untyped
+  - security
+- name: github.com/go-openapi/spec
+  version: 3faa0055dbbf2110abc1f3b4e3adbb22721e96e7
+- name: github.com/go-openapi/strfmt
+  version: 93a31ef21ac23f317792fff78f9539219dd74619
+- name: github.com/go-openapi/swag
+  version: f3f9494671f93fcff853e3c6e9e948b3eb71e590
+- name: github.com/go-openapi/validate
+  version: 8a82927c942c94794a5cd8b8b50ce2f48a955c0c
+- name: github.com/jessevdk/go-flags
+  version: 96dc06278ce32a0e9d957d590bb987c81ee66407
+- name: github.com/mailgun/mailgun-go
+  version: a4002e2df2e8ca2da6a6fbb4a72871b504e49f50
+- name: github.com/mailru/easyjson
+  version: 2f5df55504ebc322e4d52d34df6a1f5b503bf26d
+  subpackages:
+  - buffer
+  - jlexer
+  - jwriter
+- name: github.com/mitchellh/mapstructure
+  version: d0303fe809921458f417bcf828397a65db30a7e4
+- name: github.com/pkg/errors
+  version: 645ef00459ed84a119197bfb8d8205042c6df63d
+- name: github.com/PuerkitoBio/purell
+  version: 7cf257f0a33260797b0febf39f95fccd86aab2a3
+- name: github.com/PuerkitoBio/urlesc
+  version: de5bf2ad457846296e2031421a34e2568e304e35
+- name: github.com/rs/cors
+  version: 8dd4211afb5d08dbb39a533b9bb9e4b486351df6
+- name: github.com/sendgrid/rest
+  version: 14de1ac72d9ae5c3c0d7c02164c52ebd3b951a4e
+- name: github.com/sendgrid/sendgrid-go
+  version: 8caf17aa96b4a98bae8bd216878dd50ff12897b5
+  subpackages:
+  - helpers/mail
+- name: github.com/tylerb/graceful
+  version: 4654dfbb6ad53cb5e27f37d99b02e16c1872fbbb
+- name: golang.org/x/net
+  version: 1c05540f6879653db88113bc4a2b70aec4bd491f
+  subpackages:
+  - context
+  - context/ctxhttp
+  - idna
+- name: golang.org/x/text
+  version: e56139fd9c5bc7244c76116c68e500765bb6db6b
+  subpackages:
+  - secure/bidirule
+  - transform
+  - unicode/bidi
+  - unicode/norm
+  - width
+- name: gopkg.in/mgo.v2
+  version: 3f83fa5005286a7fe593b055f0d7771a7dce4655
+  subpackages:
+  - bson
+  - internal/json
+- name: gopkg.in/myles-mcdonnell/jsonx.v1
+  version: 595cd67fa646f364bbcf59d16659d07e716abd9f
+- name: gopkg.in/myles-mcdonnell/loglight.v3
+  version: 2ad56b80cf9b4fce1dcbe497e8d75641f07ac638
+- name: gopkg.in/satori/go.uuid.v1
+  version: 879c5887cd475cd7864858769793b2ceb0d44feb
+- name: gopkg.in/yaml.v2
+  version: eb3733d160e74a9c7e442f435eb3bea458e1d19f
+testImports: []

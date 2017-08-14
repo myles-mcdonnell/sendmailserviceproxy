@@ -2,9 +2,9 @@ package sendmailserviceproxy
 
 import (
 	"errors"
-	"fmt"
 	"sync"
 	"time"
+	"fmt"
 )
 
 // CallResult CIRCUIT_OPEN | TIMEOUT | CALL_COMPLETE
@@ -68,7 +68,6 @@ func (circuit *Circuit) WithPollInterval(pollInterval time.Duration) *Circuit {
 func (circuit *Circuit) Call(message EmailMessage) (error, CallResult) {
 
 	if !circuit.isClosed {
-		fmt.Println("circuit.Call : cirxcuit open - fail fast")
 		return errors.New("Circuit is open"), CIRCUIT_OPEN
 	}
 
@@ -101,7 +100,6 @@ func (circuit *Circuit) openCircuit() {
 		return
 	}
 
-	fmt.Println("circuit.Open")
 	circuit.isClosed = false
 	circuit.isClosedChangeChannel <- circuit.isClosed
 	ticker := time.NewTicker(circuit.pollInterval)

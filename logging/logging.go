@@ -17,15 +17,16 @@ const requestKeyHeaderName string = "RequestKey"
 type LogEventType string
 
 const (
-	GetHealthcheckStart LogEventType = "Get Healthcheck - Start"
-	GetHealthcheckEnd   LogEventType = "Get Healthcheck - End"
-	PostEmailStart      LogEventType = "Post Email - Start"
-	PostEmailEnd        LogEventType = "Post Email - End"
-	PostEmailDebug      LogEventType = "Post Email - Debug"
-	PostEmailError      LogEventType = "Post Email - Error"
-	Panic               LogEventType = "Panic"
-	Api                 LogEventType = "Api"
-	Unauthorised        LogEventType = "Unauthorised Request"
+	GetHealthcheckStart     LogEventType = "Get Healthcheck - Start"
+	GetHealthcheckEnd       LogEventType = "Get Healthcheck - End"
+	PostEmailStart          LogEventType = "Post Email - Start"
+	PostEmailEnd            LogEventType = "Post Email - End"
+	PostEmailDebug          LogEventType = "Post Email - Debug"
+	PostEmailError          LogEventType = "Post Email - Error"
+	Panic                   LogEventType = "Panic"
+	Api                     LogEventType = "Api"
+	Unauthorised            LogEventType = "Unauthorised Request"
+	MockEmailServiceInvoked LogEventType = "MockEmailServiceInvoked"
 )
 
 func Initialise(logger *loglight.Logger) {

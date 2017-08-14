@@ -4,6 +4,7 @@ import (
 	"github.com/go-openapi/runtime/middleware"
 	"github.com/myles-mcdonnell/sendmailserviceproxy"
 	"github.com/myles-mcdonnell/sendmailserviceproxy/logging"
+	"github.com/myles-mcdonnell/sendmailserviceproxy/models"
 	"github.com/myles-mcdonnell/sendmailserviceproxy/restapi/operations/email"
 )
 
@@ -37,7 +38,8 @@ func (emailHandler *EmailHandler) Send(message sendmailserviceproxy.EmailMessage
 
 	for _, circuit := range emailHandler.circuits {
 
-		lastError, status := circuit.Call(message)
+		var status sendmailserviceproxy.CallResult
+		lastError, status = circuit.Call(message)
 
 		if lastError == nil {
 			logging.LogDebug(logging.PostEmailDebug, nil, "emailHandler.Send OK")
@@ -81,5 +83,7 @@ func (emailHandler EmailHandler) EmailPost(params email.PostEmailParams, data in
 	}
 
 	logging.LogError(logging.PostEmailError, params.HTTPRequest, err.Error())
-	return email.NewPostEmailDefault(500)
+	return email.NewPostEmailDefault(500).WithStatusCode(500).WithPayload(&models.ErrorMessage{Message: SPtr(err.Error())})
 }
+
+func SPtr(s string) *string { return &s }
